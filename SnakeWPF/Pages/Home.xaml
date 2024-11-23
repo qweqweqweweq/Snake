@@ -9,7 +9,6 @@
       Title="Home">
     <Page.Resources>
         <FontFamily x:Key="SnakeFont">pack://application:,,,/Fonts/Silkscreen.ttf#Silkscreen [Rus by Mr.Enot]</FontFamily>
-        
     </Page.Resources>
 
     <Grid>
