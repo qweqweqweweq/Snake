@@ -8,9 +8,10 @@ namespace Snake_FilimonovaPleshkova
 {
     class Program
     {
-        static void Main(string[] args)
-        {
-
-        }
+        public static string List<Leaders> Leaders = new List<Leaders>();
+        public static string List<ViewModelUserSettings> remoteIPAddress = new List<ViewModelUserSettings>();
+        public static string List<ViewModelGames> viewModelGames = new List<ViewModelGames>();
+        private static int localPort = 5003;
+        public static int MaxSpeed = 15;
     }
 }
