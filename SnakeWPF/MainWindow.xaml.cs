@@ -20,9 +20,11 @@ namespace SnakeWPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        public Pages.Home Home = new Pages.Home();
         public MainWindow()
         {
             InitializeComponent();
+            frame.Navigate(Home);
         }
     }
 }

@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EtherealWind">
+      <HintPath>..\..\..\Downloads\EtherealWind.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -67,8 +70,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\Home.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pages\Home.xaml.cs">
+      <DependentUpon>Home.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -86,6 +96,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="Fonts\Silkscreen.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -96,7 +107,56 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Image\" />
-    <Folder Include="Pages\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Gif\0.png" />
+    <Resource Include="Gif\1.png" />
+    <Resource Include="Gif\10.png" />
+    <Resource Include="Gif\11.png" />
+    <Resource Include="Gif\12.png" />
+    <Resource Include="Gif\13.png" />
+    <Resource Include="Gif\14.png" />
+    <Resource Include="Gif\15.png" />
+    <Resource Include="Gif\16.png" />
+    <Resource Include="Gif\17.png" />
+    <Resource Include="Gif\18.png" />
+    <Resource Include="Gif\19.png" />
+    <Resource Include="Gif\2.png" />
+    <Resource Include="Gif\20.png" />
+    <Resource Include="Gif\21.png" />
+    <Resource Include="Gif\22.png" />
+    <Resource Include="Gif\23.png" />
+    <Resource Include="Gif\24.png" />
+    <Resource Include="Gif\25.png" />
+    <Resource Include="Gif\26.png" />
+    <Resource Include="Gif\27.png" />
+    <Resource Include="Gif\28.png" />
+    <Resource Include="Gif\29.png" />
+    <Resource Include="Gif\3.png" />
+    <Resource Include="Gif\30.png" />
+    <Resource Include="Gif\31.png" />
+    <Resource Include="Gif\32.png" />
+    <Resource Include="Gif\33.png" />
+    <Resource Include="Gif\34.png" />
+    <Resource Include="Gif\35.png" />
+    <Resource Include="Gif\36.png" />
+    <Resource Include="Gif\37.png" />
+    <Resource Include="Gif\38.png" />
+    <Resource Include="Gif\39.png" />
+    <Resource Include="Gif\4.png" />
+    <Resource Include="Gif\40.png" />
+    <Resource Include="Gif\41.png" />
+    <Resource Include="Gif\42.png" />
+    <Resource Include="Gif\43.png" />
+    <Resource Include="Gif\44.png" />
+    <Resource Include="Gif\45.png" />
+    <Resource Include="Gif\46.png" />
+    <Resource Include="Gif\47.png" />
+    <Resource Include="Gif\5.png" />
+    <Resource Include="Gif\6.png" />
+    <Resource Include="Gif\7.png" />
+    <Resource Include="Gif\8.png" />
+    <Resource Include="Gif\9.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
