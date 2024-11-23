@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -183,6 +184,14 @@ namespace Snake_FilimonovaPleshkova
                     }
                 }
             }
+        }
+
+        public static void SaveLeaders()
+        {
+            string json = JsonConvert.SerializeObject(leaders);
+            StreamWriter SW = new StreamWriter("./leaders.txt");
+            SW.WriteLine(json);
+            SW.Close();
         }
     }
 }
