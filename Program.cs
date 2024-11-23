@@ -10,6 +10,7 @@ namespace Snake_FilimonovaPleshkova
     {
         static void Main(string[] args)
         {
+
         }
     }
 }
