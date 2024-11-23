@@ -15,7 +15,7 @@
             <ImageBrush ImageSource="/Image/bacground.png"/>
         </Grid.Background>
         <Border Width="320" Height="200" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="Black" BorderThickness="5">
-            <Grid>
+            <Grid Background="#89A669">
                 <Label x:Name="name" Content="Alexashchka" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="{StaticResource SnakeFont}" FontSize="22" Padding="0" Margin="0,10,0,0"/>
                 <Label x:Name="glasses" Content="90 Glasses" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="{StaticResource SnakeFont}" FontSize="18" Padding="0" Margin="0,50,0,0"/>
                 <Label x:Name="top" Content="999" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="{StaticResource SnakeFont}" FontSize="35" Padding="0" Margin="0,90,0,0"/>
