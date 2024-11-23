@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.34931.43
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snake_FilimonovaPleshkova", "Snake_FilimonovaPleshkova.csproj", "{3E80BE1D-45A2-43CE-8BE1-017F52BAFA96}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "..\Common\Common.csproj", "{8690B67B-A056-48CC-BD09-F31D5BE78966}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{373E435F-CE48-40F4-A521-1C3D60A8002B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{3E80BE1D-45A2-43CE-8BE1-017F52BAFA96}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E80BE1D-45A2-43CE-8BE1-017F52BAFA96}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E80BE1D-45A2-43CE-8BE1-017F52BAFA96}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8690B67B-A056-48CC-BD09-F31D5BE78966}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8690B67B-A056-48CC-BD09-F31D5BE78966}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8690B67B-A056-48CC-BD09-F31D5BE78966}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8690B67B-A056-48CC-BD09-F31D5BE78966}.Release|Any CPU.Build.0 = Release|Any CPU
+		{373E435F-CE48-40F4-A521-1C3D60A8002B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{373E435F-CE48-40F4-A521-1C3D60A8002B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{373E435F-CE48-40F4-A521-1C3D60A8002B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{373E435F-CE48-40F4-A521-1C3D60A8002B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
