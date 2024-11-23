@@ -164,7 +164,22 @@ namespace Snake_FilimonovaPleshkova
                             {
                                 Snake.Points[i] = new Snakes.Point() { X = Snake.Points[i].X, Y = Snake.Points[i].Y };
                             }
+                            else if (Snake.direction == Snakes.Direction.Up)
+                            {
+                                Snake.Points[i] = new Snakes.Point() { X = Snake.Points[i].X, Y = Snake.Points[i].Y - Speed };
+                            }
+                            else if (Snake.direction == Snakes.Direction.Left)
+                            {
+                                Snake.Points[i] = new Snakes.Point() { X = Snake.Points[i].X - Speed, Y = Snake.Points[i].Y };
+                            }
                         }
+                    }
+                    if (Snake.Points[0].X <= 0 || Snake.Points[0].X >= 793)
+                    {
+                        Snake.GameOver = true;
+                    } else if (Snake.Points[0].Y <= 0 || Snake.Points[0].Y >= 420)
+                    {
+                        Snake.GameOver = true;
                     }
                 }
             }
