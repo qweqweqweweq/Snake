@@ -111,9 +111,9 @@ namespace Snake_FilimonovaPleshkova
             {
                 Points = new List<Snakes.Point>()
                 {
-                    new Snakes.Point() { X = 30, Y = 10 },
-                    new Snakes.Point() { X = 20, Y = 10 },
-                    new Snakes.Point() { X = 10, Y = 10 }
+                    new Snakes.Point(30, 10),
+                    new Snakes.Point(20, 10),
+                    new Snakes.Point(10, 10)
                 },
                 direction = Snakes.Direction.Start
             };
