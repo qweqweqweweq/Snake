@@ -30,7 +30,7 @@ namespace SnakeWPF
         public ViewModelUserSetting ViewModelUserSetting = new ViewModelUserSetting();
         public ViewModelGame ViewModelGame = null;
         public static IPAddress remoteIPAddress = IPAddress.Parse("127.0.0.1");
-        public static int remotePOrt = 5001;
+        public static int remotePort = 5001;
         public Thread tRec;
         public UdpClient receivingUdpClient;
         public Pages.Home Home = new Pages.Home();
@@ -96,6 +96,24 @@ namespace SnakeWPF
             }catch (Exception ex)
             {
                 Debug.WriteLine("Возникло исключение: " + ex.ToString() + "\n " + ex.Message);
+            }
+        }
+        public static void Send(string datagram)
+        {
+            UdpClient sender = new UdpClient();
+            IPEndPoint endPoint = new IPEndPoint(remoteIPAddress, remotePort);
+            try
+            {
+                byte[] bytes = Encoding.UTF8.GetBytes(datagram);
+                sender.Send(bytes, bytes.Length, endPoint);
+            }
+            catch
+            {
+                Debug.WriteLine("Возникло исключение: " + ex.ToString() + "\n " + ex.Message);
+            }
+            finally
+            {
+                sender.Close();
             }
         }
     }
