@@ -95,8 +95,8 @@ namespace SnakeWPF.Pages
                     myBrush.ImageSource = new BitmapImage(new Uri("pack://application:,,,/Image/apple.png"));
                     Ellipse points = new Ellipse()
                     {
-                        Width = 40,
-                        Height = 40,
+                        Width = 20,
+                        Height = 20,
                         Margin = new Thickness(MainWindow.mainWindow.ViewModelGames.Points.X - 20, MainWindow.mainWindow.ViewModelGames.Points.Y - 20, 0, 0),
                         Fill = myBrush
                     };
