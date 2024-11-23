@@ -44,5 +44,64 @@ namespace Snake_FilimonovaPleshkova
                 }
             }
         }
+
+        public static void Receiver()
+        {
+            UdpClient receivingUdpClient = new UdpClient(localPort);
+            IPEndPoint RemoteIpEndPoint = null;
+
+            try
+            {
+                Console.WriteLine("Команды сервера:");
+                while (true)
+                {
+                    byte[] receiveBytes = receivingUdpClient.Receive(
+                        ref RemoteIpEndPoint);
+
+                    string returnData = Encoding.UTF8.GetString(receiveBytes);
+
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("Получил команду: " + returnData.ToString());
+
+                    if (returnData.ToString().Contains("/start"))
+                    {
+                        string[] dataMessage = returnData.ToString().Split('|');
+                        ViewModelUserSettings viewModelUserSettings = JsonConvert.DeserializeObject<ViewModelUserSettings>(dataMessage[1]);
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine($"Подключился пользователь: {viewModelUserSettings.IPAddress}:{viewModelUserSettings.Port}");
+                        remoteIPAddress.Add(viewModelUserSettings);
+                        viewModelUserSettings.IdSnake = AddSnake();
+                        viewModelGames[viewModelUserSettings.IdSnake].IdSnake = viewModelUserSettings.IdSnake;
+                    }
+                    else
+                    {
+                        string[] dataMessage = returnData.ToString().Split('|');
+                        ViewModelUserSettings viewModelUserSettings = JsonConvert.DeserializeObject<ViewModelUserSettings>(dataMessage[1]);
+                        int IdPlayer = -1;
+                        IdPlayer = remoteIPAddress.FindIndex(x => x.IPAddress == viewModelUserSettings.IPAddress && x.Port == viewModelUserSettings.Port);
+                        if (IdPlayer != -1)
+                        {
+                            if (dataMessage[0] == "Up" &&
+                                viewModelGames[IdPlayer].SnakesPlayer.direction != Snakes.Direction.Down)
+                                viewModelGames[IdPlayer].SnakesPlayer.direction = Snakes.Direction.Up;
+                            else if(dataMessage[0] == "Down" &&
+                                viewModelGames[IdPlayer].SnakesPlayer.direction != Snakes.Direction.Up)
+                                viewModelGames[IdPlayer].SnakesPlayer.direction = Snakes.Direction.Down;
+                            else if(dataMessage[0] == "Left" &&
+                                viewModelGames[IdPlayer].SnakesPlayer.direction != Snakes.Direction.Right)
+                                viewModelGames[IdPlayer].SnakesPlayer.direction = Snakes.Direction.Left;
+                            else if (dataMessage[0] == "Right" &&
+                                viewModelGames[IdPlayer].SnakesPlayer.direction != Snakes.Direction.Left)
+                                viewModelGames[IdPlayer].SnakesPlayer.direction = Snakes.Direction.Right;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Возникло исключение: " + ex.ToString() + "\n" + ex.Message);
+            }
+        }
     }
 }
