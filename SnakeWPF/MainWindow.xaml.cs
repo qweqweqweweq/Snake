@@ -38,5 +38,10 @@ namespace SnakeWPF
             mainWindow = this;
             frame.Navigate(Home);
         }
+        public void startReceiver()
+        {
+            tRec = new Thread(new ThreadStart(Receiver));
+            tRec.Start();
+        }
     }
 }
