@@ -181,7 +181,7 @@ namespace Snake_FilimonovaPleshkova
                             }
                             else if (Snake.direction == Snakes.Direction.Down)
                             {
-                                Snake.Points[i] = new Snakes.Point() { X = Snake.Points[i].X, Y = Snake.Points[i].Y };
+                                Snake.Points[i] = new Snakes.Point() { X = Snake.Points[i].X, Y = Snake.Points[i].Y + Speed };
                             }
                             else if (Snake.direction == Snakes.Direction.Up)
                             {
@@ -202,7 +202,7 @@ namespace Snake_FilimonovaPleshkova
                     }
                     if (Snake.direction != Snakes.Direction.Start)
                     {
-                        for(int i = 1; i < Snake.Points.Count; i++)
+                        for (int i = 1; i < Snake.Points.Count; i++)
                         {
                             if (Snake.Points[0].X >= Snake.Points[i].X - 1 && Snake.Points[0].X <= Snake.Points[i].X + 1)
                             {
@@ -234,7 +234,7 @@ namespace Snake_FilimonovaPleshkova
                             leaders.Add(new Leaders()
                             {
                                 Name = User.Name,
-                                Points = Snake.Points.Count - 1
+                                Points = Snake.Points.Count - 3
                             });
                             leaders = leaders.OrderByDescending(x => x.Points).ThenBy(x => x.Name).ToList();
                             viewModelGames.Find(x => x.IdSnake == User.IdSnake).Top =
