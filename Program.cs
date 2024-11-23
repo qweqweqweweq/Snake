@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 
 namespace Snake_FilimonovaPleshkova
 {
@@ -120,6 +121,53 @@ namespace Snake_FilimonovaPleshkova
             viewModelGamesPlayer.Points = new Snakes.Point(new Random().Next(10, 783), new Random().Next(10, 410));
             viewModelGames.Add(viewModelGamesPlayer);
             return viewModelGames.FindIndex(x => x == viewModelGamesPlayer);
+        }
+
+        public static void Timer()
+        {
+            while (true)
+            {
+                Thread.Sleep(100);
+
+                List<ViewModelGames> RemoteSnakes = viewModelGames.FindAll(x => x.SnakesPlayer.GameOver);
+                if(RemoteSnakes.Count > 0)
+                {
+                    foreach(ViewModelGames DeadSnake in RemoteSnakes)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine($"Отключил пользователя: {remoteIPAddress.Find(x => x.IdSnake == DeadSnake.IdSnake).IPAddress}" + 
+                            $":{remoteIPAddress.Find(x => x.IdSnake == DeadSnake.IdSnake).Port}");
+                        remoteIPAddress.RemoveAll(x => x.IdSnake == DeadSnake.IdSnake);
+                    }
+                    viewModelGames.RemoveAll(x => x.SnakesPlayer.GameOver);
+                }
+
+                foreach(ViewModelUserSettings User in remoteIPAddress)
+                {
+                    Snakes Snake = viewModelGames.Find(x => x.IdSnake == User.IdSnake).SnakesPlayer;
+                    for (int i = Snake.Points.Count - 1; i >= 0; i--)
+                    {
+                        if (i != 0)
+                        {
+                            Snake.Points[i] = Snake.Points[i - 1];
+                        }
+                        else
+                        {
+                            int Speed = 10 + (int)Math.Round(Snake.Points.Count / 20f);
+                            if (Speed > MaxSpeed) Speed = MaxSpeed;
+
+                            if (Snake.direction == Snakes.Direction.Right)
+                            {
+                                Snake.Points[i] = new Snakes.Point() { X = Snake.Points[i].X + Speed, Y = Snake.Points[i].Y };
+                            }
+                            else if (Snake.direction == Snakes.Direction.Down)
+                            {
+                                Snake.Points[i] = new Snakes.Point() { X = Snake.Points[i].X, Y = Snake.Points[i].Y };
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
