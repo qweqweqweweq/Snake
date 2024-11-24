@@ -186,5 +186,8 @@
   <ItemGroup>
     <Resource Include="Image\apple.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="EtherealWind.dll" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -30,12 +30,14 @@ namespace SnakeWPF
         public static MainWindow mainWindow;
         public ViewModelUserSettings ViewModelUserSettings = new ViewModelUserSettings();
         public ViewModelGames ViewModelGames = null;
-        public static IPAddress remoteIPAddress = IPAddress.Parse("127.0.0.2");
-        public static int remotePort = 5003;
+        public List<ViewModelGames> ViewModelGamesList = null;
+        public static IPAddress remoteIPAddress = IPAddress.Parse("127.0.0.1");
+        public static int remotePort = 5001;
         public Thread tRec;
         public UdpClient receivingUdpClient;
         public Pages.Home Home = new Pages.Home();
         public Pages.Game Game = new Pages.Game();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -57,9 +59,9 @@ namespace SnakeWPF
             {
                 frame.Navigate(PageOpen);
                 DoubleAnimation endAnimation = new DoubleAnimation();
-                endAnimation.From = 0;
-                endAnimation.To = 1;
-                endAnimation.Duration = TimeSpan.FromSeconds(0.6);
+                startAnimation.From = 0;
+                startAnimation.To = 1;
+                startAnimation.Duration = TimeSpan.FromSeconds(0.6);
                 frame.BeginAnimation(OpacityProperty, endAnimation);
             };
             frame.BeginAnimation(OpacityProperty, startAnimation);
@@ -68,6 +70,7 @@ namespace SnakeWPF
         {
             receivingUdpClient = new UdpClient(int.Parse(ViewModelUserSettings.Port));
             IPEndPoint RemoteIpEndPoint = null;
+
             try
             {
                 while (true)
@@ -91,6 +94,10 @@ namespace SnakeWPF
                     }
                     else
                     {
+                        receiveBytes = receivingUdpClient.Receive(ref RemoteIpEndPoint);
+                        returnDate = Encoding.UTF8.GetString(receiveBytes);
+                        ViewModelGamesList = JsonConvert.DeserializeObject<List<ViewModelGames>>(returnDate.ToString());
+
                         Game.CreateUI();
                     }
                 }
@@ -99,7 +106,7 @@ namespace SnakeWPF
                 Debug.WriteLine("Возникло исключение: " + ex.ToString() + "\n " + ex.Message);
             }
         }
-        public static void Send(string datagram)
+        public void Send(string datagram)
         {
             UdpClient sender = new UdpClient();
             IPEndPoint endPoint = new IPEndPoint(remoteIPAddress, remotePort);
